@@ -9,7 +9,7 @@
 				<div class="card-header">
 					<!-- <h4 class="card-title"><?php echo $judul;?></h4> -->
 					<div class="col-md-12">
-						<a data-toggle="modal" data-target="#tambah-kunjungan" class="btn btn-outline-primary">Tambah Data Kunjungan</a>
+						<!-- <a data-toggle="modal" data-target="#tambah-kunjungan" class="btn btn-outline-primary">Tambah Data Kunjungan</a> -->
 					</div>
 				</div>
 				<div class="card-content">

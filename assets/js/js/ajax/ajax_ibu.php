@@ -100,7 +100,7 @@
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
 
-			//tampilDataIbu();
+			tampilDataIbu();
 			if (out.status == 'form') {
 				$('.form-msg').html(out.msg);
 				effect_msg_form();

@@ -72,32 +72,37 @@ class Kunjungan extends Auth_Controller {
 
 	public function update() {
 		$id = trim($_POST['id']);
-		$data['Kunjungan'] = $this->M_Kunjungan->select_by_id($id);
+		$data['dataKunjungan'] = $this->M_Kunjungan->select_by_nik($id);
 
-		//print_r($data);
 		echo show_my_modal('modals/modal_update_kunjungan', 'update-kunjungan', $data);
 	}
 
 	public function prosesUpdate() {
-		$this->form_validation->set_rules('nama', 'Nama Ibu', 'trim|required');
-
 		$data = $this->input->post();
-		if ($this->form_validation->run() == TRUE) {
 
+		$nik = $data['nik'];
+		$cek_nik = $this->M_Kunjungan->cek_nik($nik);
+
+		if(!empty($cek_nik))
+		{
 			$result = $this->M_Kunjungan->update($data);
+		}else{
+			$result = $this->M_Kunjungan->insert($data);
+		}
 
-			if ($result > 0) {
-				$out['status'] = '';
-				$out['msg'] = show_succ_msg('Data Ibu Berhasil dirubah');
-			} else {
-				$out['status'] = '';
-				$out['msg'] = show_err_msg('Data Ibu Gagal dirubah');
-			}
+		if ($result > 0) {
+			$out['status'] = '';
+			$out['msg'] = show_succ_msg('Data Kunjungan Berhasil dirubah');
 		} else {
-			$out['status'] = 'form';
-			$out['msg'] = show_err_val(validation_errors());
+			$out['status'] = '';
+			$out['msg'] = show_err_msg('Data Kunjungan Gagal dirubah');
 		}
 		echo json_encode($out);
+	}
+
+	public function prosesUpdate1() {
+		$data = $this->input->post();
+		print_r($data);
 	}
 
 	public function cari(){

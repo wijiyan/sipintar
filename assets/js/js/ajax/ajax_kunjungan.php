@@ -33,7 +33,7 @@
 		setTimeout(function() { $('.msg').fadeOut(1000); }, 3000);
 	}
 
-	function tampilKunjungan() {
+	function tampilKunjungan1() {
 		var cari = $('#cari').val();
 		var isi = $('#isi').val();
 		$.get('<?php echo base_url('Kunjungan/tampil/'); ?>'+cari+'/'+isi, function(data) {
@@ -44,7 +44,7 @@
 		});
 	}
 
-	function tampilKunjungan1() {
+	function tampilKunjungan() {
 		$.get('<?php echo base_url('Kunjungan/tampil'); ?>', function(data) {
 
 			MyTable.fnDestroy();
@@ -74,7 +74,7 @@
 		})
 	})
 
-	$(document).on("click", ".update-dataKunjungan", function() {
+	$(document).on("click", ".update-kunjungan", function() {
 		var id = $(this).attr("data-id");
 		
 		$.ajax({
@@ -100,7 +100,7 @@
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
 
-			//tampilKunjungan();
+			tampilKunjungan();
 			if (out.status == 'form') {
 				$('.form-msg').html(out.msg);
 				effect_msg_form();

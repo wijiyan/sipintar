@@ -21,53 +21,77 @@ class M_Kunjungan extends CI_Model {
     //$this->db->select('tbl_skrining.id as `id_skrining`');
         $this->db->from('tbl_kunjungan');
         $this->db->join('tbl_ibu', 'tbl_kunjungan.nik = tbl_ibu.nik', 'right');
+        $this->db->order_by('tbl_ibu.id','DESC');
         $data = $this->db->get();
 
         return $data->result();
     }
 
     public function select_by_id($id) {
-        $data = $this->db->get_where('tbl_ibu', array('id' => $id));
+        $data = $this->db->get_where('tbl_kunjungan', array('id' => $id));
 
         return $data->row();
     }
 
     public function select_by_nik($id) {
-        $data = $this->db->get_where('tbl_ibu', array('nik' => $id));
+        $data = $this->db->query('SELECT
+        tbl_ibu.id as `id_ibu`,
+        tbl_ibu.nik as `nik_ibu`,
+        tbl_ibu.nama_ibu,
+        tbl_ibu.alamat,
+        tbl_ibu.no_rm,
+        tbl_ibu.tpt_persalinan,
+        tbl_ibu.wilayah,
+        tbl_ibu.hp,
+        tbl_ibu.tgl_persalinan,
+        tbl_kunjungan.nik,
+        tbl_kunjungan.jd_kn1,
+        tbl_kunjungan.tgl_kn1,
+        tbl_kunjungan.jd_kn2,
+        tbl_kunjungan.tgl_kn2,
+        tbl_kunjungan.jd_kn3,
+        tbl_kunjungan.tgl_kn3,
+        tbl_kunjungan.jd_kn4,
+        tbl_kunjungan.tgl_kn4
+        FROM
+        tbl_ibu
+        LEFT JOIN tbl_kunjungan ON tbl_ibu.nik = tbl_kunjungan.nik
+        where tbl_ibu.id = '.$id
+        );
 
         return $data->row();
     }
 
     public function cek_nik($nik) {
         $this->db->where('nik', $nik);
-        $data = $this->db->get('tbl_ibu');
+        $data = $this->db->get('tbl_kunjungan');
 
         return $data->num_rows();
     }
 
     public function update($data) {
-        $this->db->update('tbl_ibu', $data, array('id' => $data['id']));
+        $this->db->update('tbl_kunjungan', $data, array('nik' => $data['nik']));
         return $this->db->affected_rows();
     }
 
     public function update_bu_nik($data) {
-        $this->db->update('tbl_ibu', $data, array('nik' => $data['nik']));
+        $this->db->update('tbl_kunjungan', $data, array('nik' => $data['nik']));
         return $this->db->affected_rows();
     }
 
     public function delete($id) {
-        $this->db->delete('tbl_ibu', array('id' => $id));
+        $this->db->delete('tbl_kunjungan', array('id' => $id));
 
         return $this->db->affected_rows();
     }
 
     public function insert($data) {
-        $this->db->insert('tbl_ibu', $data);
+        $this->db->insert('tbl_kunjungan', $data);
         return $this->db->affected_rows();
     }
 
-    public function insert_batch_ibu($data) {
-        $this->db->insert_batch('tbl_ibu', $data);
+    public function insert_batch_kunjungan($data) {
+        $this->db->insert_batch('tbl_kunjungan', $data);
         
         return $this->db->affected_rows();
     }
