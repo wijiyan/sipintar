@@ -20,7 +20,7 @@ class DataIbu extends Auth_Controller {
 
 	}
 
-	public function tampil($cari = '', $isi = '') {
+	public function tampil1($cari = '', $isi = '') {
 		if($isi == ''){
 			echo show_msg('Kolom Pencarian Kosong');
 		}else{
@@ -30,7 +30,7 @@ class DataIbu extends Auth_Controller {
 		$this->load->view('DataIbu/list_data', $data);
 	}
 
-	public function tampil1() {
+	public function tampil() {
 		$data['dataIbu'] = $this->M_DataIbu->select_all();
 		
 		$this->load->view('DataIbu/list_data', $data);
@@ -39,10 +39,6 @@ class DataIbu extends Auth_Controller {
 	public function delete() {
 		$id = $_POST['id'];
 		$this->db->where('id', $id);
-		$isi = $this->db->get('tbl_ibu');
-		foreach ($isi->result() as $row) {
-			$this->db->delete('admin', array('username' => $row->nik));
-		}
 		$result = $this->M_DataIbu->delete($id);
 
 		if ($result > 0) {
@@ -83,13 +79,11 @@ class DataIbu extends Auth_Controller {
 	public function update() {
 		$id = trim($_POST['id']);
 		$data['dataIbu'] = $this->M_DataIbu->select_by_id($id);
-
-		//print_r($data);
 		echo show_my_modal('modals/modal_update_dataibu', 'update-dataibu', $data);
 	}
 
 	public function prosesUpdate() {
-		$this->form_validation->set_rules('nama', 'Nama Ibu', 'trim|required');
+		$this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'trim|required');
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {

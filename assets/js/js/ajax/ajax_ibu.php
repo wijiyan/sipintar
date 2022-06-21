@@ -9,7 +9,7 @@
 	});
 
 	window.onload = function() {
-		//tampilDataIbu();
+		tampilDataIbu();
 		<?php
 		if ($this->session->flashdata('msg') != '') {
 			echo "effect_msg();";
@@ -33,7 +33,7 @@
 		setTimeout(function() { $('.msg').fadeOut(1000); }, 3000);
 	}
 
-	function tampilDataIbu() {
+	function tampilDataIbu1() {
 		var cari = $('#cari').val();
 		var isi = $('#isi').val();
 		$.get('<?php echo base_url('DataIbu/tampil/'); ?>'+cari+'/'+isi, function(data) {
@@ -44,7 +44,7 @@
 		});
 	}
 
-	function tampilDataIbu1() {
+	function tampilDataIbu() {
 		$.get('<?php echo base_url('DataIbu/tampil'); ?>', function(data) {
 
 			MyTable.fnDestroy();
@@ -58,7 +58,7 @@
 	$(document).on("click", ".konfirmasiHapus-dataibu", function() {
 		id = $(this).attr("data-id");
 	})
-	$(document).on("click", ".hapus-dataDataIbu", function() {
+	$(document).on("click", ".hapus-dataibu", function() {
 		var id_dataibu = id;
 
 		$.ajax({
@@ -74,7 +74,7 @@
 		})
 	})
 
-	$(document).on("click", ".update-dataDataIbu", function() {
+	$(document).on("click", ".update-dataibu", function() {
 		var id = $(this).attr("data-id");
 		
 		$.ajax({

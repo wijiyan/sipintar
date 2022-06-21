@@ -13,8 +13,8 @@ foreach ($dataIbu as $row) {
         <td><?php echo $row->wilayah; ?></td>
         <td class="text-center" style="width:150px;">
             <div class="btn-group-vertical" role="group" aria-label="Vertical button group">    
-                <button class="btn btn-sm btn-warning update-dataIbu" data-id="<?php echo $row->id; ?>"><i class="feather icon-edit-2"></i> Edit</button>
-                <button class="btn btn-sm btn-danger konfirmasiHapus-ibu" data-id="<?php echo $row->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="feather icon-x"></i> Delete</button>
+                <button class="btn btn-sm btn-warning update-dataibu" data-id="<?php echo $row->id; ?>"><i class="feather icon-edit-2"></i> Edit</button>
+                <button class="btn btn-sm btn-danger konfirmasiHapus-dataibu" data-id="<?php echo $row->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="feather icon-x"></i> Delete</button>
             </div>
         </td>
     </tr>

@@ -45,4 +45,7 @@ if($page == 'Home')
 else if ($page == 'DataIbu'){
 	include './assets/js/js/ajax/ajax_ibu.php';
 }
+else if ($page == 'Kunjungan'){
+	include './assets/js/js/ajax/ajax_kunjungan.php';
+}
 ?>

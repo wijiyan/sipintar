@@ -13,7 +13,7 @@
 						<a data-toggle="modal" data-target="#tambah-dataibu" class="btn btn-outline-primary">Tambah Data Ibu</a>
 					</div>
 					
-					<div class="col-xl-4 col-md-6 col-12 mb-1">
+<!-- 					<div class="col-xl-4 col-md-6 col-12 mb-1">
 						<fieldset class="form-group">
 							<label for="cari">Cari Berdasarkan</label>
 							<select class="form-control select2" name="cari" id="cari">
@@ -33,7 +33,7 @@
 							<label for="status_pantau"></label>
 							<button class="form-control btn btn-outline-success" onclick="tampilDataIbu()"><i class="fa fa-search-plus"></i> Tampilkan</button>
 						</fieldset>
-					</div>
+					</div> -->
 				</div>
 				<div class="card-content">
 					<div class="card-body card-dashboard">
@@ -66,4 +66,4 @@
 
 <div id="tempat-modal"></div>
 
-<?php show_my_confirm('konfirmasiHapus', 'hapus-dataIbu', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
+<?php show_my_confirm('konfirmasiHapus', 'hapus-dataibu', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>

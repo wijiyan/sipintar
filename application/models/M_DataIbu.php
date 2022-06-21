@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_DataIbu extends CI_Model {
 
-    public function select_all($cari, $isi) {
+    public function select_all1($cari, $isi) {
         if($cari == 'nik'){
             $this->db->like('nik', urldecode($isi));
         } else if ($cari == 'nama'){
@@ -16,7 +16,7 @@ class M_DataIbu extends CI_Model {
         return $data->result();
     }
 
-    public function select_all1() {
+    public function select_all() {
         $this->db->order_by('nama_ibu','ASC');
         $data = $this->db->get('tbl_ibu');
 
