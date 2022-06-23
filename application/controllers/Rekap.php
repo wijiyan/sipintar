@@ -20,95 +20,21 @@ class Rekap extends Auth_Controller {
 
 	}
 
-	public function tampil1($cari = '', $isi = '') {
-		if($isi == ''){
-			echo show_msg('Kolom Pencarian Kosong');
-		}else{
-			$data['rekap'] = $this->M_Rekap->select_all($cari, $isi);
-		}
-		
-		$this->load->view('Rekap/list_data', $data);
-	}
-
-	public function tampil() {
-		$data['rekap'] = $this->M_Rekap->select_all();
-		
-		$this->load->view('Rekap/list_data', $data);
-	}
-
-	public function delete() {
-		$id = $_POST['id'];
-		$this->db->where('id', $id);
-		$result = $this->M_Rekap->delete($id);
-
-		if ($result > 0) {
-			echo show_succ_msg('Data Ibu Berhasil dihapus');
-		} else {
-			echo show_err_msg('Data Ibu Gagal dihapus'); 
-		}
-	}
-
-	public function simpan() {
-		$data = $this->input->post();
-
-		$nik = $data['nik'];
-		$cek_nik = $this->M_Rekap->cek_nik($nik);
-
-
-		if(!empty($cek_nik))
-		{
-			$out['status'] = 'form';
-			$out['msg'] = show_err_msg('Nomor identitas sudah ada');
-		}
-		else
-		{
-			$result = $this->M_Rekap->insert($data);
-
-			if ($result > 0) {
-				$out['status'] = '';
-				$out['msg'] = show_succ_msg('Data Ibu Berhasil ditambahkan');
-			} else {
-				$out['status'] = '';
-				$out['msg'] = show_err_msg('Data Ibu Gagal ditambahkan');
-			}
-		}
-		
-		echo json_encode($out);
-	}
-
-	public function update() {
-		$id = trim($_POST['id']);
-		$data['rekap'] = $this->M_Rekap->select_by_id($id);
-		echo show_my_modal('modals/modal_update_rekap', 'update-rekap', $data);
-	}
-
-	public function prosesUpdate() {
-		$this->form_validation->set_rules('nama_ibu', 'Nama Ibu', 'trim|required');
+	public function cetak() {
 
 		$data = $this->input->post();
-		if ($this->form_validation->run() == TRUE) {
 
-			$result = $this->M_Rekap->update($data);
+		$data['userdata'] 	= $this->userdata;
 
-			if ($result > 0) {
-				$out['status'] = '';
-				$out['msg'] = show_succ_msg('Data Ibu Berhasil dirubah');
-			} else {
-				$out['status'] = '';
-				$out['msg'] = show_err_msg('Data Ibu Gagal dirubah');
-			}
-		} else {
-			$out['status'] = 'form';
-			$out['msg'] = show_err_val(validation_errors());
-		}
-		echo json_encode($out);
+		$data['page'] 		= "Rekap";
+		$data['judul'] 		= "Rekap Kunjungan";
+
+		// $data['modal_tambah_rekap'] = show_my_modal('modals/modal_tambah_rekap', 'tambah-rekap', $data);
+
+		//$this->template->views('Rekap/rekap', $data);
+		print_r($data);
+
 	}
-
-	public function cari(){
-		$nik=$_GET['nik'];
-		$cari =$this->M_autocomplete->cari($nik)->result();
-		echo json_encode($cari);
-	} 
 
 	public function cetak_excel(){
 		$data = $this->input->post();
