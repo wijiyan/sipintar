@@ -28,10 +28,9 @@
 								<fieldset class="form-group">
 									<label for="status">Status</label>
 									<select class="form-control select2" name="status" id="status">
-										<option value="semua_laporan">Semua Pelaporan</option>
-										<option value="">Semua Pelaporan</option>
-										<option value="belum_jadwal_swab">Belum Ada Jadwal Swab</option>
-										<option value="terjadwal_swab">Terjadwal Swab</option>
+										<option value="semua">Semua</option>
+										<option value="lengkap">Lengkap</option>
+										<option value="tidak_lengkap">Tidak Lengkap</option>
 									</select>
 								</fieldset>
 							</div>

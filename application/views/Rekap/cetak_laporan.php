@@ -59,21 +59,22 @@
           <th>Nama</th>
           <th>No HP</th>
           <th>Jadwal KN1</th>
-          <th>Kunjugnan KN1</th>
+          <th>Kunjungan KN1</th>
           <th>Jadwal KN2</th>
-          <th>Kunjugnan KN2</th>
+          <th>Kunjungan KN2</th>
           <th>Jadwal KN3</th>
-          <th>Kunjugnan KN3</th>
+          <th>Kunjungan KN3</th>
           <th>Jadwal KN4</th>
-          <th>Kunjugnan KN4</th>
+          <th>Kunjungan KN4</th>
         </tr>
       </tr>
     </thead>
     <tbody>
       <?php 
-      $data = $this->input->post();
+      //$data = $this->input->post();
+      $data = $this->db->query($sql);
       $no=1;
-      foreach ($isi->result() as $row){ ?>
+      foreach ($data->result() as $row){ ?>
         <tr>
           <td><?php echo $no++;?></td>
           <td><?php echo $row->nik;?></td>
@@ -96,58 +97,58 @@
 <?php
 
 function TanggalIndonesia($date) {
-    if($date == '0000-00-00' OR $date == '')
+  if($date == '0000-00-00' OR $date == '')
     return '-';
-    
-    $tgl = substr($date, 8, 2);
-    $bln = substr($date, 5, 2);
-    $thn = substr($date, 0, 4);
-    
-    switch ($bln) {
-        case 1 : {
-            $bln = 'Jan';
-        }break;
-        case 2 : {
-            $bln = 'Feb';
-        }break;
-        case 3 : {
-            $bln = 'Mar';
-        }break;
-        case 4 : {
-            $bln = 'Apr';
-        }break;
-        case 5 : {
-            $bln = 'Mei';
-        }break;
-        case 6 : {
-            $bln = "Jun";
-        }break;
-        case 7 : {
-            $bln = 'Jul';
-        }break;
-        case 8 : {
-            $bln = 'Agu';
-        }break;
-        case 9 : {
-            $bln = 'Sept';
-        }break;
-        case 10 : {
-            $bln = 'Okt';
-        }break;
-        case 11 : {
-            $bln = 'Nov';
-        }break;
-        case 12 : {
-            $bln = 'Des';
-        }break;
-        default: {
-            $bln = 'UnKnown';
-        }break;
-    }
-    
-    
-    $tanggalIndonesia = $tgl . " " . $bln . " " . $thn;
-    return $tanggalIndonesia;
+
+  $tgl = substr($date, 8, 2);
+  $bln = substr($date, 5, 2);
+  $thn = substr($date, 0, 4);
+
+  switch ($bln) {
+    case 1 : {
+      $bln = 'Jan';
+    }break;
+    case 2 : {
+      $bln = 'Feb';
+    }break;
+    case 3 : {
+      $bln = 'Mar';
+    }break;
+    case 4 : {
+      $bln = 'Apr';
+    }break;
+    case 5 : {
+      $bln = 'Mei';
+    }break;
+    case 6 : {
+      $bln = "Jun";
+    }break;
+    case 7 : {
+      $bln = 'Jul';
+    }break;
+    case 8 : {
+      $bln = 'Agu';
+    }break;
+    case 9 : {
+      $bln = 'Sept';
+    }break;
+    case 10 : {
+      $bln = 'Okt';
+    }break;
+    case 11 : {
+      $bln = 'Nov';
+    }break;
+    case 12 : {
+      $bln = 'Des';
+    }break;
+    default: {
+      $bln = 'UnKnown';
+    }break;
+  }
+
+
+  $tanggalIndonesia = $tgl . " " . $bln . " " . $thn;
+  return $tanggalIndonesia;
 }
 
 ?>
