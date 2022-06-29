@@ -45,10 +45,19 @@
 									</select>
 								</fieldset>
 							</div>
+							<div class="col-md-6">
+								<fieldset>
+									<div class="custom-control custom-checkbox">
+										<input name="excel" type="checkbox" class="custom-control-input" id="customCheck1">
+										<label class="custom-control-label" for="customCheck1">Export Excel</label>
+									</div>
+								</fieldset>
+							</div>
 							<div class="col-md-12">
 								<fieldset class="form-group">
 									<label for="status_pantau"></label>
 									<button type="submit" class="form-control btn btn-outline-primary"><i class="fa fa-search"></i> Lihat</button>
+									<!-- <button type="submit" class="form-control btn btn-outline-primary"><i class="fa fa-file-excel-o"></i> Export Excel</button> -->
 								</fieldset>
 							</div>
 						</div>
