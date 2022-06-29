@@ -20,19 +20,92 @@ class Rekap extends Auth_Controller {
 
 	}
 
-	public function cetak() {
+	public function cetak1() {
+		$data = $this->input->post();
 
+		// if($data['status'] == 'lengkap')
+		// {
+		// 	$status = ' Where status = "lengkap"';
+		// }		
+		// elseif($data['status'] == 'tidak_lengkap')
+		// {
+		// 	$status = ' Where status = "tidak_lengkap"';
+		// }
+
+		if($data['wilayah'] == 'semua')
+		{
+			$wilayah == '';
+		}
+		elseif($data['wilayah'] == 'cpb')
+		{
+			$wilayah == ' AND wilayah = "cpb"';
+		}
+		elseif($data['wilayah'] == 'cpt')
+		{
+			$wilayah == ' AND wilayah = "cpt"';
+		}
+		elseif($data['wilayah'] == 'rws')
+		{
+			$wilayah == ' AND wilayah = "rws"';
+		}
+		elseif($data['wilayah'] == 'lw')
+		{
+			$wilayah == ' AND wilayah = "lw"';
+		}
+
+	}
+
+	public function cetak() {
 		$data = $this->input->post();
 
 		$data['userdata'] 	= $this->userdata;
 
 		$data['page'] 		= "Rekap";
 		$data['judul'] 		= "Rekap Kunjungan";
+		if($data['wilayah'] == 'semua')
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_kunjungan');
+			$this->db->join('tbl_ibu', 'tbl_kunjungan.nik = tbl_ibu.nik', 'right');
+			$this->db->order_by('tbl_ibu.id','DESC');
+		}
+		elseif($data['wilayah'] == 'cpb')
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_kunjungan');
+			$this->db->join('tbl_ibu', 'tbl_kunjungan.nik = tbl_ibu.nik', 'right');
+			$this->db->where('wilayah', 'cpb');
+			$this->db->order_by('tbl_ibu.id','DESC');
+		}
+		elseif($data['wilayah'] == 'cpt')
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_kunjungan');
+			$this->db->join('tbl_ibu', 'tbl_kunjungan.nik = tbl_ibu.nik', 'right');
+			$this->db->where('wilayah', 'cpt');
+			$this->db->order_by('tbl_ibu.id','DESC');
+		}
+		elseif($data['wilayah'] == 'rws')
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_kunjungan');
+			$this->db->join('tbl_ibu', 'tbl_kunjungan.nik = tbl_ibu.nik', 'right');
+			$this->db->where('wilayah', 'rws');
+			$this->db->order_by('tbl_ibu.id','DESC');
+		}
+		elseif($data['wilayah'] == 'lw')
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_kunjungan');
+			$this->db->join('tbl_ibu', 'tbl_kunjungan.nik = tbl_ibu.nik', 'right');
+			$this->db->where('wilayah', 'lw');
+			$this->db->order_by('tbl_ibu.id','DESC');
+		}
 
-		// $data['modal_tambah_rekap'] = show_my_modal('modals/modal_tambah_rekap', 'tambah-rekap', $data);
 
-		//$this->template->views('Rekap/rekap', $data);
-		print_r($data);
+		$data['isi'] = $this->db->get();
+
+		$this->load->view('Rekap/cetak_laporan', $data);
 
 	}
 
@@ -111,6 +184,6 @@ class Rekap extends Auth_Controller {
 		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 		$objWriter->save('php://output');
 	}
-	
+
 
 }
