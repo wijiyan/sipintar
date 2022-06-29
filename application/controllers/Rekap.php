@@ -61,14 +61,6 @@ class Rekap extends Auth_Controller {
 		}
 
 		$data['sql'] = ' SELECT
-		sipintar.tbl_kunjungan.jd_kn1,
-		sipintar.tbl_kunjungan.tgl_kn1,
-		sipintar.tbl_kunjungan.jd_kn2,
-		sipintar.tbl_kunjungan.tgl_kn2,
-		sipintar.tbl_kunjungan.jd_kn3,
-		sipintar.tbl_kunjungan.tgl_kn3,
-		sipintar.tbl_kunjungan.jd_kn4,
-		sipintar.tbl_kunjungan.tgl_kn4,
 		sipintar.tbl_ibu.id,
 		sipintar.tbl_ibu.nik,
 		sipintar.tbl_ibu.nama_ibu,
@@ -77,7 +69,15 @@ class Rekap extends Auth_Controller {
 		sipintar.tbl_ibu.tpt_persalinan,
 		sipintar.tbl_ibu.wilayah,
 		sipintar.tbl_ibu.hp,
-		sipintar.tbl_ibu.tgl_persalinan
+		sipintar.tbl_ibu.tgl_persalinan,
+		sipintar.tbl_kunjungan.jd_kn1,
+		sipintar.tbl_kunjungan.tgl_kn1,
+		sipintar.tbl_kunjungan.jd_kn2,
+		sipintar.tbl_kunjungan.tgl_kn2,
+		sipintar.tbl_kunjungan.jd_kn3,
+		sipintar.tbl_kunjungan.tgl_kn3,
+		sipintar.tbl_kunjungan.jd_kn4,
+		sipintar.tbl_kunjungan.tgl_kn4
 		FROM
 		sipintar.tbl_kunjungan
 		RIGHT JOIN sipintar.tbl_ibu ON sipintar.tbl_kunjungan.nik = sipintar.tbl_ibu.nik'
