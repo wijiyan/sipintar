@@ -61,26 +61,26 @@ class Rekap extends Auth_Controller {
 		}
 
 		$data['sql'] = ' SELECT
-		sipintar.tbl_ibu.id,
-		sipintar.tbl_ibu.nik,
-		sipintar.tbl_ibu.nama_ibu,
-		sipintar.tbl_ibu.alamat,
-		sipintar.tbl_ibu.no_rm,
-		sipintar.tbl_ibu.tpt_persalinan,
-		sipintar.tbl_ibu.wilayah,
-		sipintar.tbl_ibu.hp,
-		sipintar.tbl_ibu.tgl_persalinan,
-		sipintar.tbl_kunjungan.jd_kn1,
-		sipintar.tbl_kunjungan.tgl_kn1,
-		sipintar.tbl_kunjungan.jd_kn2,
-		sipintar.tbl_kunjungan.tgl_kn2,
-		sipintar.tbl_kunjungan.jd_kn3,
-		sipintar.tbl_kunjungan.tgl_kn3,
-		sipintar.tbl_kunjungan.jd_kn4,
-		sipintar.tbl_kunjungan.tgl_kn4
+		tbl_ibu.id,
+		tbl_ibu.nik,
+		tbl_ibu.nama_ibu,
+		tbl_ibu.alamat,
+		tbl_ibu.no_rm,
+		tbl_ibu.tpt_persalinan,
+		tbl_ibu.wilayah,
+		tbl_ibu.hp,
+		tbl_ibu.tgl_persalinan,
+		tbl_kunjungan.jd_kn1,
+		tbl_kunjungan.tgl_kn1,
+		tbl_kunjungan.jd_kn2,
+		tbl_kunjungan.tgl_kn2,
+		tbl_kunjungan.jd_kn3,
+		tbl_kunjungan.tgl_kn3,
+		tbl_kunjungan.jd_kn4,
+		tbl_kunjungan.tgl_kn4
 		FROM
-		sipintar.tbl_kunjungan
-		RIGHT JOIN sipintar.tbl_ibu ON sipintar.tbl_kunjungan.nik = sipintar.tbl_ibu.nik'
+		tbl_kunjungan
+		RIGHT JOIN tbl_ibu ON tbl_kunjungan.nik = tbl_ibu.nik'
 		.$status.$wilayah;
 		//' AND (tbl_kunjungan.jd_kn1 BETWEEN "'.$data['dari'].'" and "'.$data['sampai'].'" OR tbl_kunjungan.jd_kn2 BETWEEN "'.$data['dari'].'" and "'.$data['sampai'].'" and tbl_kunjungan.jd_kn3 BETWEEN "'.$data['dari'].'" and "'.$data['sampai'].'" OR tbl_kunjungan.jd_kn4 BETWEEN "'.$data['dari'].'" and "'.$data['sampai'].'")';
 
