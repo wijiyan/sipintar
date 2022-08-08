@@ -48,26 +48,18 @@
                     <!-- <h3 class="white">Laporan Belum di TL : </h3><span class="notification-title">Laporan</span> -->
                   </div>
                 </li>
-
-              <?php
-              $sql="SELECT a.* FROM tbl_ibu a JOIN tbl_kunjungan b on a.nik=b.nik WHERE 1=1 AND (b.tgl_kn1  = CURRENT_DATE() - INTERVAL 1 DAY OR b.tgl_kn2 = CURRENT_DATE() - INTERVAL 1 DAY OR b.tgl_kn3 = CURRENT_DATE() - INTERVAL 1 DAY OR b.tgl_kn4 = CURRENT_DATE() - INTERVAL 1 DAY ) ";    
-              $query = $this->db->query($sql);
-
-              foreach($query->result() as $row) {
-              ?>
-              <li class="scrollable-container media-list">
+<!--               <li class="scrollable-container media-list">
                 <a class="d-flex justify-content-between" href="javascript:void(0)">
                   <div class="media d-flex align-items-start">
                     <div class="media-left"><i class="feather icon-plus-square font-medium-5 primary"></i></div>
                     <div class="media-body">
-                      <h6 class="primary media-heading"><?php echo $row->nama_ibu; ?></h6>
-                      <small class="notification-text"> <?php echo $row->nik; ?> Tidak Datang</small>
+                      <h6 class="primary media-heading">You have new order!</h6>
+                      <small class="notification-text"> Are your going to meet me tonight?</small>
                     </div>
-                    <small><time class="media-meta" datetime="2015-06-11T18:29:20+08:00"><?php echo $row->tgl_persalinan; ?></time></small>
+                    <small><time class="media-meta" datetime="2015-06-11T18:29:20+08:00">9 hours ago</time></small>
                   </div>
                 </a>
-              </li>
-              <?php }; ?>
+              </li> -->
               <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="<?php echo base_url('Pelaporan');?>">Baca Semua Notifikasi</a></li>
             </ul>
           </li>
